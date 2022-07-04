@@ -1,0 +1,431 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>LENGUA 4</title>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!--Bootstrap-->
+    <link href="css/bootstrap.css" rel="stylesheet">
+    <!--Animaciones-->
+    <link href="css/animate.css" rel="stylesheet">
+    <!--Css propio del proyecto-->
+    <link href="css/custom.css" rel="stylesheet">
+    <link href="css/fraccion.css" rel="stylesheet">
+    <link href="css/jquery-ui.min.css" rel="stylesheet">
+    <link href="css/Comprendo.css" rel="stylesheet">
+    <link href="css/hover.css" rel="stylesheet" media="all">
+    <link href="css/magic.css" rel="stylesheet" media="all">
+</head>
+<style type="text/css">
+.correctoar {
+    background-color: #00e600 !important;
+    -webkit-print-color-adjust: exact;
+    color: #ffffff !important;
+    -webkit-print-color-adjust: exact;
+}
+
+.incorrectoar {
+    background-color: #ff6666 !important;
+    -webkit-print-color-adjust: exact;
+    color: #ffffff !important;
+    -webkit-print-color-adjust: exact;
+}
+
+.drag1 {
+
+    cursor: move;
+}
+
+.imaf2 {
+    width: 8.882869692532942vw;
+    height: 1.8062225475841874vw;
+    border-radius: 0.7320644216691069vw;
+    cursor: pointer;
+    background-color: transparent;
+    border: transparent;
+}
+
+.cajas {
+    max-width: 95%;
+    max-height: 200px;
+    border: 1px #009900 solid;
+    border-radius: 5px;
+    padding: 15px;
+    margin: 5px;
+}
+
+.actividad1 {
+    background: #fff;
+}
+
+.correcto {
+    color: #ffffff;
+    background-color: #8FB435;
+    font-weight: 700;
+}
+
+.incorrecto {
+    color: #ffffff;
+    background-color: #E76E80;
+    font-weight: 700;
+}
+
+.desactivar {
+    background-color: #444;
+    color: #888;
+    padding: 8px;
+}
+
+#cabecera .badge {
+    background-color: #232956;
+}
+
+.backnoabierta {
+    background-color: #00e600 !important;
+    -webkit-print-color-adjust: exact;
+}
+
+.caja2 {
+    width: 11.665625vw;
+    height: 4.5552083333333335vw;
+    padding: 0.6510416666666666vw;
+    border: 0.06510416666666667vw solid #aaaaaa;
+
+}
+
+div:empty::before {
+    color: grey;
+    font-size: 1.3020833333333333vw;
+    position: relative;
+    top: -5px
+}
+
+div[data-placeholder]:not([data-placeholder=""]):empty::before {
+    content: attr(data-placeholder);
+}
+
+.posab2 {
+    font-size: 1.3020833333333333vw;
+}
+
+.inp2 {
+    width: 170px;
+    height: 45px;
+    font-size: 15px;
+    border: 3px solid #71bf44;
+    text-align: center;
+    border-radius: 15px 0px 15px 0px;
+}
+
+.inp3 {
+    width: 170px;
+    height: 45px;
+    font-size: 15px;
+    border: 3px solid #8e499b;
+    text-align: center;
+    border-radius: 15px 0px 15px 0px;
+}
+
+.inp4 {
+    width: 170px;
+    height: 45px;
+    font-size: 15px;
+    border: 3px solid #1fb5d3;
+    text-align: center;
+    border-radius: 15px 0px 15px 0px;
+}
+
+.inp5 {
+    width: 170px;
+    height: 45px;
+    font-size: 15px;
+    border: 3px solid #feca0a;
+    text-align: center;
+    border-radius: 15px 0px 15px 0px;
+}
+
+
+.inputfile {
+    width: 0.1px;
+    height: 0.1px;
+    opacity: 0;
+    overflow: hidden;
+    position: absolute;
+    z-index: -1;
+}
+</style>
+
+<body>
+    <div id="nota-informativa" class="nota-ayuda">
+        <button type="button" class="close" onclick="cerrar_ayuda()" aria-label="Close"><span class="glyphicon glyphicon-remove-sign" aria-hidden="true"></span></button>
+        <!--ACA ESCRIBIR TEXTO DE LA AYUDA DE LA ACTIVIDAD-->
+        <div class="redactoraudio"></div>
+        <div id='mensaje'>
+            <b>Las actividades 2 y 3 deben ser calificadas por tú docente.</b><br>
+            En la actividad 1 selecciona todas las cualidades de los personajes según corresponda.<br>
+            En la actividad 2 completa con un adjetivo cada sustantivo correctamente.<br>
+            En la actividad 3 escribe en los casilleros adjetivos que te definan y añade una imagen de tú retrato haciendo click en el icono <span class="hidden">de la cámara</span> <span class="glyphicon glyphicon-camera"></span>, busca la imagen que deseas mostrar, selecciónala y haz click en "Abrir", tu imágen deberá mostrarse en la actividad.<br>
+            <span id="ayudas"></span>
+        </div>
+    </div>
+    <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+        </div>
+        <div class="navbar-collapse collapse">
+            <ul class="nav navbar-nav navbar-left">
+                <li>
+                    <button class="btn button btnHelp mytooltip" data-info="Mostrar ayuda de la actividad" onclick="mostrar_ayuda()">
+                        <span class="glyphicon glyphicon-question-sign" aria-hidden="true"></span>
+                    </button>
+                </li>
+                <li>
+                    <button class="btn button button_1 btnGuardar mytooltip" data-info="Guardar en local" onclick="$('#myModal').modal('show')">
+                        <span class="glyphicon glyphicon-floppy-save" aria-hidden="true"></span>
+                    </button>
+                </li>
+                <li>
+                    <button class="btn button button_1 btnEvniar mytooltip" style="display: none !important;" data-info="Enviar a Correo">
+                        <span class="glyphicon glyphicon-envelope" aria-hidden="true"></span>
+                    </button>
+                </li>
+                <li>
+                    <button class="btn button button_2 btnIniciar mytooltip" style="display: none !important;" disabled data-info="Iniciar">
+                        <span class="glyphicon glyphicon-play" aria-hidden="true"></span>
+                    </button>
+                </li>
+                <li>
+                    <button class="btn button button_2 btnRepetir mytooltip" data-info="Repetir" onclick="location.reload()">
+                        <span class="glyphicon glyphicon-refresh" aria-hidden="true"></span>
+                    </button>
+                </li>
+                <li>
+                    <button class="btn button button_3 btnCalificar mytooltip" data-info="Calificar / Comprobar" id="bt_comprobar" onclick="total()">
+                        <span class="glyphicon glyphicon-check" aria-hidden="true"></span>
+                    </button>
+                </li>
+                <li>
+                    <button class="btn button button_5 mytooltip display-none" style="display: none !important;" data-info="Pantalla completa" onclick="full_screen_change()">
+                        <span id="full_ico" class="glyphicon glyphicon-resize-full" aria-hidden="true"></span>
+                    </button>
+                </li>
+            </ul>
+            <ul class="nav navbar-nav navbar-right" style="margin-right: 0px;margin-left: 0px; ">
+                <li><span class="notificacion actividad">
+                        <span class="glyphicon glyphicon-list-alt"></span> Actividad <span id='n_cont'>1</span> / <span id='n_ejer'>1</span>
+                    </span>
+                    <span class="notificacion nota">
+                        <span class="glyphicon glyphicon-pencil"></span> Nota <span id="txtNota"></span> / 10
+                    </span>
+                    <span class="notificacion pagina">
+                        <span class="glyphicon glyphicon-bookmark"></span> Pág <i id="n_pagina"></i>
+                    </span>
+                </li>
+            </ul>
+        </div>
+    </nav>
+    <!--FIN DE NAVBAR QUE SE AÑADE-->
+    <div class="container espacio">
+        <div class="panel border-exploro" id="activity">
+            <!--modificar el bg- segun la actividad-->
+            <div class="panel-heading bg-exploro">
+                <span class="titulo"><img src="img/icoE.png" alt="">Exploro para recordar</span>
+                <span class="titulo_2 txtAlumno display-none" id="nombre_alumno">Alumno: </span>
+            </div>
+            <div class="panel-body">
+                <!--pregunats de la actividad-->
+                <div class="text-question">
+                    <input type="text" size="2" style="text-align:center;" class="nota-abierta" min="0" max="10" id="pre1a" readonly="">&nbsp;
+                    <span>
+                        <font><b style="color: #0166b3 !important; -webkit-print-color-adjust: exact;">1. </b></font><b>Escribe</b> las cualidades de cada personaje de una fábula. <i class="5pts"></i>
+                    </span><br><br>
+                    <div class="row" id="pregunta2">
+                        <div class="col-12" align="center">
+                            <div style="height: 20.151041666666664vw; width: 63vw;position: relative;">
+                                <div style="width: 31.25vw; height: 19.125vw; top: 0.2220644216691069vw; left: 0.722547584187408vw; position: absolute;" class="act1class" id="act01Txt1">
+                                </div>
+                                <div style="width: 31.25vw; height: 19.125vw; top: 0.2220644216691069vw; left: 32.122547584187408vw; position: absolute;" class="act1class" id="act01Txt2">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <br>
+                <div class="text-question">
+                    <input type="text" size="2" style="text-align:center;" class="nota-abierta" min="0" max="10" id="pre2a" readonly="">&nbsp;
+                    <span>
+                        <font><b style="color: #0566B3 !important; -webkit-print-color-adjust: exact;">2. </b></font><b>Escribe</b> un adjetivo que se relacione con cada sustantivo.<i class="2ptsd"></i>
+                    </span><br><br>
+                    <div class="row">
+                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12" align="center">
+                            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12" style="display: inline;">
+                                <table style="display: inline-flex; margin: 10px;" class="act2class" id="act02Txt1">
+                                </table>
+                                <table style="display: inline-flex; margin: 10px;" class="act2class" id="act02Txt2">
+                                </table>
+                                <table style="display: inline-flex; margin: 10px;" class="act2class" id="act02Txt3">
+                                </table>
+                                <table style="display: inline-flex; margin: 10px;" class="act2class" id="act02Txt4">
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <br>
+                <div class="text-question">
+                    <input type="text" size="2" style="text-align:center;" class="nota-abierta" min="0" max="10" id="pre3a" readonly="">&nbsp;
+                    <span>
+                        <font><b style="color: #03b9ac !important; -webkit-print-color-adjust: exact;">3. </b></font> <b>Pega</b> tu fotografía o <b>dibuja</b> tu retrato en el centro. <b>Completa</b> tus características con adjetivos, según tu género.<i class="3ptsd"></i>
+                    </span><br><br>
+                    <div class="row">
+                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12" align="center">
+                            <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4" align="center" style="line-height: 50px;">
+                                <input class="form-control 0 hvr-grow-shadow inp4" type="text" placeholder="Texto" maxlength="15">
+                                <br>
+                                <input class="form-control 0 hvr-grow-shadow inp4" type="text" placeholder="Texto" maxlength="15">
+                                <br>
+                                <input class="form-control 0 hvr-grow-shadow inp4" type="text" placeholder="Texto" maxlength="15">
+                                <br>
+                                <input class="form-control 0 hvr-grow-shadow inp4" type="text" placeholder="Texto" maxlength="15">
+                                <br>
+                                <input class="form-control 0 hvr-grow-shadow inp4" type="text" placeholder="Texto" maxlength="15">
+                                <br>
+                                <input class="form-control 0 hvr-grow-shadow inp4" type="text" placeholder="Texto" maxlength="15">
+                            </div>
+                            <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4" align="center">
+                                <div style="height: 23vw; width: 23vw; position: relative;">
+                                    <div style="height: 21.20058565153734vw; width: 20vw; position: absolute; top: 1vw; left: -1vw;">
+                                        <img src="img/i3_p28_act11.jpg" style="width: 20.625vw; height: 21.875vw; top: 0.7320644216691069vw; left: 1.222547584187408vw; position: absolute;">
+                                    </div>
+                                    <div style="height: 19.28941434846266vw; width: 15.89941434846266vw; position: absolute; top: -1.55vw; left: -0.5vw;">
+                                        <div class="circ" style="width: 15.89941434846266vw; height: 2.90941434846266vw; top: 0.26159590043924vw;"> <img id="img1"/ style="width: 15.89941434846266vw; height: 19.28941434846266vw; top: 4.56159590043924vw; left: 2.9289897510981vw; position: absolute; border-radius: 0.36603221083455345vw;"> </div> <span style="color: #000000; font-size: 1.2vw; position: absolute; width: 19.09941434846266vw; height: 25.78941434846266vw; top: 1.06159590043924vw; left: 1.9289897510981vw;"><b>Clic para subir tu imagen</b></span>
+                                        <div> <input type="file" id="file1" class="inputfile" onchange="mostrar1()" /> <label for="file1" style="font-size: 1.6603221083455346vw; padding: 0.43923865300146414vw; border-radius: 100%; background-color: #AB6ABD; color: white; cursor: pointer; left: 2.8vw; top: 0.0vw" title="clic para subir imagen" class="glyphicon glyphicon-camera"></label> </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4" align="center" style="line-height: 50px;">
+                                <input class="form-control 0 hvr-grow-shadow inp4" type="text" placeholder="Texto" maxlength="15">
+                                <br>
+                                <input class="form-control 0 hvr-grow-shadow inp4" type="text" placeholder="Texto" maxlength="15">
+                                <br>
+                                <input class="form-control 0 hvr-grow-shadow inp4" type="text" placeholder="Texto" maxlength="15">
+                                <br>
+                                <input class="form-control 0 hvr-grow-shadow inp4" type="text" placeholder="Texto" maxlength="15">
+                                <br>
+                                <input class="form-control 0 hvr-grow-shadow inp4" type="text" placeholder="Texto" maxlength="15">
+                                <br>
+                                <input class="form-control 0 hvr-grow-shadow inp4" type="text" placeholder="Texto" maxlength="15">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Modal Guardar PDF-->
+    <div class="modal fade animated pulse" id="myModal" role="dialog">
+        <div class="modal-dialog">
+            <!-- Modal content-->
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" onclick="$('#myModal').modal('hide')">&times;</button>
+                    <h4 class="modal-title">Guarda esta actividad en tu computadora</h4>
+                </div>
+                <div class="modal-body">
+                    <form id="modal_form" class="form-horizontal">
+                        <div class="form-group ">
+                            <div class="col-sm-2">
+                                <label id="lbl_nombre" for="txtAlumno">Alumno: </label>
+                            </div>
+                            <div class="col-sm-10">
+                                <!--el input para ingresar el nombre del alumno debe se txt_alumno-->
+                                <input type="text" class="form-control nombre " id="txtAlumno" placeholder="Ingrese tu nombre">
+                                <div class="alert alert-danger display-none" id="txtAlumnoAlert" role="alert">
+                                    <button type="button" class="close" onclick="o$('#myModal').modal('hide')" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                                    <span class="glyphicon glyphicon-info-sign error-color" aria-hidden="true"></span>
+                                    Debes ingresar tu nombre</div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-success" onclick="save_open_activity_to_local('txtAlumno')">Guardar</button>
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src="js/jquery.min.js"></script>
+    <script src="js/jquery-ui.js"></script>
+    <!-- Include all compiled plugins (below), or include individual files as needed -->
+    <script src="js/bootstrap.min.js"></script>
+    <!--generador de pdf-->
+    <script src="js/html2pdf/html2pdf.bundle.min.js"></script>
+    <script src="js/screenfull.js"></script>
+    <script src="js/helper.js"></script>
+    <script src="js/autosize.js"></script>
+    <script src="js/activities.js"></script>
+    <script src="js/Utilitario.js"></script>
+    <script src="js/numPaginas.js"></script>
+    <script src="js/actividad11.js"></script>
+    <script src="js/anijs-min.js"></script>
+    <script src="js/textoavoz.js"></script>
+    <script type="text/javascript">
+    $("#n_pagina").html('28');
+
+    function mostrar1() {
+        var archivo = document.getElementById("file1").files[0];
+        var reader = new FileReader();
+        if (file1) {
+            reader.readAsDataURL(archivo);
+            reader.onloadend = function() {
+                document.getElementById("img1").src = reader.result;
+            }
+        }
+    }
+
+    $(".drag1").draggable({
+        revert: "invalid",
+        zIndex: 5,
+        containment: "#pregunta1",
+        scroll: false,
+    });
+
+    $(".pintar").droppable({
+        classes: {
+            "ui-droppable-active": "ui-state-active", //color azul al arrastrar el elemento
+            "ui-droppable-hover": "ui-state-hover"
+        },
+        drop: function(e, ui) {
+            for (i = 1; i < 8; i++) { //4 elementos
+                var nn = 'c' + i; //obtenemos la clase
+                if ($(ui.draggable).hasClass(nn)) { //comparamos la clase del arrastre
+
+                    if ($(this).hasClass(nn)) { //con la clase del destino q tienen el mismo nombre
+                        resp2.push('ok'); //guardamos ok si esta correcta
+                    } else {
+                        resp2.push('no');
+                    }
+                    console.log(resp2);
+                }
+
+            }
+
+            $(ui.draggable).removeClass("bg_palabra"); //quitamos clase de background
+            $(ui.draggable).addClass("bounceIn"); //quitamos clase de background
+            $(ui.draggable).addClass('posab2');
+            ui.draggable.attr("style", "");
+            $(this).append(ui.draggable);
+        }
+    });
+    </script>
+</body>
+
+</html>

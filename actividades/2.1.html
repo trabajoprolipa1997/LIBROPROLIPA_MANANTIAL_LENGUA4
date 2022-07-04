@@ -1,0 +1,566 @@
+<!DOCTYPE HTML>
+<html>
+
+<head>
+    <title>Manantial Lengua 4</title>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!--Bootstrap-->
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <!--Animaciones-->
+    <link href="css/animate.css" rel="stylesheet">
+    <!--Css propio del proyecto-->
+    <link href="css/custom.css" rel="stylesheet">
+    <link href="css/fraccion.css" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="css/literallycanvas.css">
+    <link href="css/jquery-ui.min.css" rel="stylesheet">
+    <link href="css/Comprendo.css" rel="stylesheet">
+    <link href="css/hover.css" rel="stylesheet" media="all">
+    <link href="css/magic.css" rel="stylesheet" media="all">
+    <style>
+        .s{
+            font-size: 2vw;
+        }
+
+
+.imaf2 {
+    width: 12.882869692532942vw;
+    height: 1.8062225475841874vw;
+    border-radius: 0.7320644216691069vw;
+    cursor: pointer;
+    background-color: transparent;
+    border: transparent;
+}
+
+.caja4 {
+    width: 300px;
+    height: 80px;
+    border: 1px solid #aaaaaa;
+    max-width: 100%;
+    display: inline-block;
+    font-size: 17px;
+}
+
+.drag1 {
+    cursor: move;
+}
+
+div:empty::before {
+    color: grey;
+    font-size: 20px;
+}
+
+div[data-placeholder]:not([data-placeholder=""]):empty::before {
+    content: attr(data-placeholder);
+}
+
+.backnoabierta {
+background-color: #00e600 !important;
+-webkit-print-color-adjust: exact;
+}
+
+.correctoar {
+background-color: #00e600 !important; -webkit-print-color-adjust: exact;
+color: #ffffff!important; -webkit-print-color-adjust: exact;
+}
+
+.incorrectoar {
+background-color: #ff6666 !important; -webkit-print-color-adjust: exact;
+color: #ffffff!important; -webkit-print-color-adjust: exact;
+}
+
+.literally {
+    position: relative;
+    background-color: #DDDDDD;
+    min-height: 860px;
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    -ms-touch-action: none;
+    user-select: none;
+    border: 3px solid #e5e5e5;
+}
+
+.bordtable{
+    border: 2px solid #15B1EF;
+}
+
+.imaf3 {
+    width: 135px;
+    height: 35px;
+    border-radius: 10px;
+    font-size: 15px;
+    cursor: pointer;
+}
+
+.drag2, .drag, .drag3 {
+    cursor: move;
+    mix-blend-mode: multiply;
+    max-width: 100%;
+    font-size: 23px
+}
+.posab2{
+    position: absolute;
+    left: -0.1vw;
+    top: -0.0vw;
+    font-size: 2.5vw;
+}
+
+.imgtama{
+    width: 9.765625vw;
+    height: 5.533854166666667vw;
+}
+
+.bin1 {
+        animation-name: bounceIn;
+        animation-duration: 5s;
+        animation-timing-function: ease-out;
+        animation-delay: 0s;
+        animation-iteration-count: infinite;
+        animation-direction: initial;
+        animation-fill-mode: forwards;
+        color: #0077c0 !important; -webkit-print-color-adjust: exact;
+    }
+
+    .qcolor{
+        background-color: #ffffff; 
+    }
+div:empty::before {
+    color: grey;
+    font-size: 20px;
+    line-height: 100px
+}
+
+div[data-placeholder]:not([data-placeholder=""]):empty::before {
+    content: attr(data-placeholder);
+}
+
+.circ2 {
+    font-size: 0.1067708333333333vw;
+    position: absolute;
+    border: transparent;
+    text-align: center;
+    mix-blend-mode: multiply;
+    
+}
+
+.caja3 {
+    height: 100%;
+    border: 1px #029b23 solid;
+    border-radius: 5px;
+    padding: 5px;
+    margin: 5px;
+    text-align: center;
+}
+
+.circ {
+    font-size: 0.1067708333333333vw;
+    position: absolute;
+    border: transparent;
+    text-align: center;
+}
+
+.crucig {
+    width: 145px;
+    height: 42px;
+    font-size: 15px;
+    border: 3px solid #40ae49;
+    text-align: center;
+    margin: 3px
+}
+
+
+.maxwidth{
+    max-width: 100%;
+}
+
+.bordefinal{
+    border: 2px solid #20C997;
+    margin: 5px;
+    border-radius: 67px 58px 58px 58px;
+-moz-border-radius: 67px 58px 58px 58px;
+-webkit-border-radius: 67px 58px 58px 58px;
+padding: 2px;
+font-size: 20px;
+color: #000000;
+display: inline-flex;
+}
+
+.desaparece{
+    text-align: center;
+    background-color: #ffffff; border: 1px #20c997 dashed; border-radius: 15px;
+    padding: 5px
+}
+
+.inputact2{
+width: 50px;height: 40px; font-size: 15px;border: 5px solid #a694c6; text-align: center;
+}
+
+.bordertable{
+    border: 2px solid #3887c0;
+}
+
+.tacharCaja::before {
+    position: absolute;
+    color: #000000;
+    content: "X";
+    font-size: 40px;
+    text-align: center;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.encierreCaja {
+    border: 3px solid #1c8a00;
+    padding: 3px;
+    border-radius: 20px;
+}
+
+.encierreCaja2 {
+    border: 4px dotted #1c8a00;
+    padding: 3px;
+    border-radius: 20px;
+}
+
+.subrayar {
+    border-bottom: solid 4px #1c8a00;
+}
+
+.backact2{
+    background: rgb(210,210,212);
+background: -moz-radial-gradient(circle, rgba(210,210,212,1) 8%, rgba(247,247,248,1) 60%, rgba(227,227,230,1) 92%)!important; -webkit-print-color-adjust: exact;
+background: -webkit-radial-gradient(circle, rgba(210,210,212,1) 8%, rgba(247,247,248,1) 60%, rgba(227,227,230,1) 92%)!important; -webkit-print-color-adjust: exact;
+background: radial-gradient(circle, rgba(210,210,212,1) 8%, rgba(247,247,248,1) 60%, rgba(227,227,230,1) 92%)!important; -webkit-print-color-adjust: exact;
+filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#d2d2d4",endColorstr="#e3e3e6",GradientType=1)!important; -webkit-print-color-adjust: exact;
+}
+
+
+    </style>
+</head>
+
+<body>
+    <div id="nota-informativa" class="nota-ayuda">
+        <button type="button" class="close" onclick="cerrar_ayuda()" aria-label="Close"><span class="glyphicon glyphicon-remove-sign" aria-hidden="true"></span></button>
+        <!--ACA ESCRIBIR TEXTO DE LA AYUDA DE LA ACTIVIDAD-->
+        <div class="redactoraudio"></div>
+        <div id='mensaje'>
+            <b>La actividad 1 debe ser calificada por tú docente.</b><br>
+            En la actividad 1 observa con atención la pregunta y respóndela correctamente.<br>
+            En la actividad 2 haz un click para encerrar completo, dos click para encerrar punteado cada palabra o palabras según corresponda.<br>
+            <span id="ayudas"></span>
+        </div>
+    </div>
+    <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+        </div>
+        <div class="navbar-collapse collapse">
+            <ul class="nav navbar-nav navbar-left">
+                <li>
+                    <button class="btn button btnHelp mytooltip" data-info="Mostrar ayuda de la actividad" onclick="mostrar_ayuda()">
+                        <span class="glyphicon glyphicon-question-sign" aria-hidden="true"></span>
+                    </button>
+                </li>
+                <li>
+                    <button class="btn button button_1 btnGuardar mytooltip" data-info="Guardar en local" onclick="$('#myModal').modal('show')">
+                        <span class="glyphicon glyphicon-floppy-save" aria-hidden="true"></span>
+                    </button>
+                </li>
+                <li>
+                    <button class="btn button button_1 btnEvniar mytooltip" style="display: none !important;" data-info="Enviar a Correo">
+                        <span class="glyphicon glyphicon-envelope" aria-hidden="true"></span>
+                    </button>
+                </li>
+                <li>
+                    <button class="btn button button_2 btnIniciar mytooltip" style="display: none !important;" disabled data-info="Iniciar">
+                        <span class="glyphicon glyphicon-play" aria-hidden="true"></span>
+                    </button>
+                </li>
+                <li>
+                    <button class="btn button button_2 btnRepetir mytooltip" data-info="Repetir" onclick="location.reload()">
+                        <span class="glyphicon glyphicon-refresh" aria-hidden="true"></span>
+                    </button>
+                </li>
+                <li>
+                    <button class="btn button button_3 btnCalificar mytooltip" data-info="Calificar / Comprobar" id="bt_comprobar" onclick="total();">
+                        <span class="glyphicon glyphicon-check" aria-hidden="true"></span>
+                    </button>
+                </li>
+                <li>
+                    <button class="btn button button_5 mytooltip display-none" style="display: none !important;" data-info="Pantalla completa" onclick="full_screen_change()">
+                        <span id="full_ico" class="glyphicon glyphicon-resize-full" aria-hidden="true"></span>
+                    </button>
+                </li>
+            </ul>
+            <ul class="nav navbar-nav navbar-right" style="margin-right: 0px;margin-left: 0px; ">
+                <li><span class="notificacion actividad display-none">
+                        <span class="glyphicon glyphicon-list-alt"></span> Actividad <span id="n_cont">1</span> / <span id="n_ejer">1</span>
+                    </span>
+                    <span class="notificacion nota">
+                        <span class="glyphicon glyphicon-pencil"></span> Nota <span id="txtNota">/ 10</span>
+                    </span>
+                    <span class="notificacion pagina">
+                        <span class="glyphicon glyphicon-bookmark"></span> Pág <i id="n_pagina"></i>
+                    </span>
+                </li>
+            </ul>
+        </div>
+    </nav>
+    <!--FIN DE NAVBAR QUE SE AÑADE-->
+    <!--contenedor de la actividad-->
+    <div class="container espacio">
+        <!--div que contiene la actividad modificar el border- segun la actividad-->
+        <div class="panel border-aplico" id="activity">
+            <!--modificar el bg- segun la actividad-->
+            <div class="panel-heading bg-aplico ">
+                <span class="titulo"><img src="img/icoA.png" alt=""></span>
+                <span class="titulo">Aplico</span>
+                <span class="titulo_2 txtAlumno display-none" id="nombre_alumno">Alumno: </span>
+            </div>
+            <div class="panel-body">
+                <div class="text-question">
+                    <input type="text" size="2" style="text-align:center" class="nota-abierta" min="0" max="10" id="pre1a" placeholder="0">&nbsp;
+                    <span>
+                        <font><b style="color: #0166b3 !important; -webkit-print-color-adjust: exact;">1. </b></font><b>Imagina</b> que una abeja puede hablar y actuar como un ser humano. ¿Qué respuestas crees que daría a estas preguntas?<i class="5ptsd"></i>
+                    </span>
+                    <div class="row">
+                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12" align="center">
+                                <br>
+                                <table>
+                                    <tr style="background-color: #ddeab8 !important; -webkit-print-color-adjust: exact;">
+                                        <td style="padding: 10px;">
+                                            <p class="fuente" style="line-height: 5px;">¿En quiénes confiarías?</p>
+                                            <div style="box-shadow: 2px 2px 10px #000000;">
+                                                <textarea class="form-control text-question no-redimensionar hvr-grow-shadow" style="box-shadow: 0px -20px 20px #e0e1e3 inset !important; -webkit-print-color-adjust: exact; background-color: #ffffff !important; -webkit-print-color-adjust: exact;" cols="60" rows="4" placeholder="Texto"></textarea>
+                                            </div>
+                                        </td>
+                                        <td style="padding: 10px;">
+                                            <p class="fuente" style="line-height: 5px;">¿Por qué?</p>
+                                            <div style="box-shadow: 2px 2px 10px #000000;">
+                                                <textarea class="form-control text-question no-redimensionar hvr-grow-shadow" style="box-shadow: 0px -20px 20px #e0e1e3 inset !important; -webkit-print-color-adjust: exact; background-color: #ffffff !important; -webkit-print-color-adjust: exact;" cols="60" rows="4" placeholder="Texto"></textarea>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    <tr style="background-color: #ceebf3 !important; -webkit-print-color-adjust: exact;">
+                                        <td style="padding: 10px;">
+                                            <p class="fuente" style="line-height: 5px;">¿Con quiénes serías amistoso?</p>
+                                            <div style="box-shadow: 2px 2px 10px #000000;">
+                                                <textarea class="form-control text-question no-redimensionar hvr-grow-shadow" style="box-shadow: 0px -20px 20px #e0e1e3 inset !important; -webkit-print-color-adjust: exact; background-color: #ffffff !important; -webkit-print-color-adjust: exact;" cols="60" rows="4" placeholder="Texto"></textarea>
+                                            </div>
+                                        </td>
+                                        <td style="padding: 10px;">
+                                            <p class="fuente" style="line-height: 5px;">¿Por qué?</p>
+                                            <div style="box-shadow: 2px 2px 10px #000000;">
+                                                <textarea class="form-control text-question no-redimensionar hvr-grow-shadow" style="box-shadow: 0px -20px 20px #e0e1e3 inset !important; -webkit-print-color-adjust: exact; background-color: #ffffff !important; -webkit-print-color-adjust: exact;" cols="60" rows="4" placeholder="Texto"></textarea>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    <tr style="background-color: #ddeab8 !important; -webkit-print-color-adjust: exact;">
+                                        <td style="padding: 10px;">
+                                            <p class="fuente" style="line-height: 5px;">¿En quiénes no confiarías?</p>
+                                            <div style="box-shadow: 2px 2px 10px #000000;">
+                                                <textarea class="form-control text-question no-redimensionar hvr-grow-shadow" style="box-shadow: 0px -20px 20px #e0e1e3 inset !important; -webkit-print-color-adjust: exact; background-color: #ffffff !important; -webkit-print-color-adjust: exact;" cols="60" rows="4" placeholder="Texto"></textarea>
+                                            </div>
+                                        </td>
+                                        <td style="padding: 10px;">
+                                            <p class="fuente" style="line-height: 5px;">¿Por qué?</p>
+                                            <div style="box-shadow: 2px 2px 10px #000000;">
+                                                <textarea class="form-control text-question no-redimensionar hvr-grow-shadow" style="box-shadow: 0px -20px 20px #e0e1e3 inset !important; -webkit-print-color-adjust: exact; background-color: #ffffff !important; -webkit-print-color-adjust: exact;" cols="60" rows="4" placeholder="Texto"></textarea>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    <tr style="background-color: #ceebf3 !important; -webkit-print-color-adjust: exact;">
+                                        <td style="padding: 10px;">
+                                            <p class="fuente" style="line-height: 5px;">¿A quién ayudarías?</p>
+                                            <div style="box-shadow: 2px 2px 10px #000000;">
+                                                <textarea class="form-control text-question no-redimensionar hvr-grow-shadow" style="box-shadow: 0px -20px 20px #e0e1e3 inset !important; -webkit-print-color-adjust: exact; background-color: #ffffff !important; -webkit-print-color-adjust: exact;" cols="60" rows="4" placeholder="Texto"></textarea>
+                                            </div>
+                                        </td>
+                                        <td style="padding: 10px;">
+                                            <p class="fuente" style="line-height: 5px;">¿Por qué?</p>
+                                            <div style="box-shadow: 2px 2px 10px #000000;">
+                                                <textarea class="form-control text-question no-redimensionar hvr-grow-shadow" style="box-shadow: 0px -20px 20px #e0e1e3 inset !important; -webkit-print-color-adjust: exact; background-color: #ffffff !important; -webkit-print-color-adjust: exact;" cols="60" rows="4" placeholder="Texto"></textarea>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    <tr style="background-color: #ddeab8 !important; -webkit-print-color-adjust: exact;">
+                                        <td style="padding: 10px;">
+                                            <p class="fuente" style="line-height: 5px;">¿A quién le darías un consejo?</p>
+                                            <div style="box-shadow: 2px 2px 10px #000000;">
+                                                <textarea class="form-control text-question no-redimensionar hvr-grow-shadow" style="box-shadow: 0px -20px 20px #e0e1e3 inset !important; -webkit-print-color-adjust: exact; background-color: #ffffff !important; -webkit-print-color-adjust: exact;" cols="60" rows="4" placeholder="Texto"></textarea>
+                                            </div>
+                                        </td>
+                                        <td style="padding: 10px;">
+                                            <p class="fuente" style="line-height: 5px;">¿Por qué?</p>
+                                            <div style="box-shadow: 2px 2px 10px #000000;">
+                                                <textarea class="form-control text-question no-redimensionar hvr-grow-shadow" style="box-shadow: 0px -20px 20px #e0e1e3 inset !important; -webkit-print-color-adjust: exact; background-color: #ffffff !important; -webkit-print-color-adjust: exact;" cols="60" rows="4" placeholder="Texto"></textarea>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <br>
+                <div class="text-question">
+                    <input type="text" size="2" style="text-align:center;" class="nota-abierta" min="0" max="10" id="pre2a" readonly="">&nbsp;
+                    <span>
+                        <font><b style="color: #0566B3 !important; -webkit-print-color-adjust: exact;">2. </b></font><b>Encierra</b> los elementos de la fábula según los colores que se indican.<i class="5pts"></i>
+                    </span><br><br>
+                    <div class="row">
+                        <div class="col-xs-12" align="center">
+                            <div class="col-xs-12" align="center">
+                                <div style="display: inline;">
+                                    <div style="display: inline-flex; margin: 5px;">
+                                        <div style="border: 2px solid #1c8a00; padding: 10px; border-radius: 20px;">Personajes</div>
+                                    </div>
+                                    <div style="display: inline-flex; margin: 5px;">
+                                        <div style="border: 4px dotted #1c8a00; padding: 10px; border-radius: 20px;">Moraleja</div>
+                                    </div>
+                                </div>
+                                <table>
+                                    <tr class="backact2">
+                                        <td>
+                                            <p class="fuente2"><b style="color: #71bf45 !important; -webkit-print-color-adjust: exact;">El jardinero y el perro
+                                                    <br>(Adaptación)</b></p>
+                                            <div>
+                                                <p class="fuente" style="line-height: 50px;"><span class="1 enc05a0" data-anijs="if: click, do: bounceIn animated">El</span> <span class="1 enc03a0" data-anijs="if: click, do: bounceIn animated">perro</span> <span class="1 enc05a1" data-anijs="if: click, do: bounceIn animated">de un</span> <span class="1 enc03a1" data-anijs="if: click, do: bounceIn animated">jardinero</span> <span class="1 enc05a2" data-anijs="if: click, do: bounceIn animated">había caído en un pozo.</span>
+                                                    <br><span class="1 enc05a3" data-anijs="if: click, do: bounceIn animated">El</span> <span class="1 enc03a2" data-anijs="if: click, do: bounceIn animated">jardinero</span><span class="1 enc05a4" data-anijs="if: click, do: bounceIn animated">, por salvarle,</span> <span class="1 enc05a5" data-anijs="if: click, do: bounceIn animated">descendió</span> <span class="1 enc05a6" data-anijs="if: click, do: bounceIn animated"> también.</span>
+                                                    <br><span class="1 enc05a7" data-anijs="if: click, do: bounceIn animated">El</span> <span class="1 enc03a3" data-anijs="if: click, do: bounceIn animated">perro</span> <span class="1 enc05a8" data-anijs="if: click, do: bounceIn animated">creyó que el</span> <span class="1 enc03a4" data-anijs="if: click, do: bounceIn animated">jardinero</span> <span class="1 enc05a9" data-anijs="if: click, do: bounceIn animated">bajaba para hundirlo </span> <span class="1 enc05a10" data-anijs="if: click, do: bounceIn animated"> más todavía. Entonces, se volvió y lo</span> <span class="1 enc05a11" data-anijs="if: click, do: bounceIn animated">mordió</span>.
+                                                    <br><span class="1 enc05a12" data-anijs="if: click, do: bounceIn animated">El</span> <span class="1 enc03a5" data-anijs="if: click, do: bounceIn animated">jardinero</span><span class="1 enc05a13" data-anijs="if: click, do: bounceIn animated">, adolorido por la herida, decidió salir del</span> <span class="1 enc05a14" data-anijs="if: click, do: bounceIn animated">pozo</span><span class="1 enc05a15" data-anijs="if: click, do: bounceIn animated">, mientras decía:</span>
+                                                    <br><span class="1 enc05a16" data-anijs="if: click, do: bounceIn animated">–Me lo</span> <span class="1 enc05a17" data-anijs="if: click, do: bounceIn animated">merezco</span>. <span class="1 enc05a18" data-anijs="if: click, do: bounceIn animated">¿Quién me llama para salvar a un</span> <span class="1 enc03a6" data-anijs="if: click, do: bounceIn animated">perro</span> <span class="1 enc05a19" data-anijs="if: click, do: bounceIn animated">que no quiere ayuda?</span>
+                                                    <br><span class="1 enc04a0" data-anijs="if: click, do: bounceIn animated">Cuando estés en peligro, no maltrates a quien desea ayudarte.</span></p>
+                                            </div>
+                                        </td>
+                                        <td align="center">
+                                            <div>
+                                                <img src="img/i1_p11_act1.jpg" style="max-width: 100%; padding: 10px; border-radius: 20px;">
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td colspan="2">
+                                            <div align="right">
+                                                <font size="2">S/A (s/f). “El jardinero y el perro. Fábula de Esopo con moraleja”.
+                                                    <br>[Adaptación]. Pekelandia. Recuperado de <a href="https://goo.gl/Cx7AZG" target="_blank">https://goo.gl/Cx7AZG</a></font>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <br>
+            </div>
+        </div>
+    </div>
+    <!-- Modal Guardar PDF-->
+    <div class="modal fade animated pulse" id="myModal" role="dialog">
+        <div class="modal-dialog">
+            <!-- Modal content-->
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" onclick="$('#myModal').modal('hide')">&times;</button>
+                    <h4 class="modal-title">Guardar la actividad en su máquina local</h4>
+                </div>
+                <div class="modal-body">
+                    <form id="modal_form" class="form-horizontal">
+                        <div class="form-group ">
+                            <div class="col-sm-2">
+                                <label id="lbl_nombre" for="txtAlumno">Alumno: </label>
+                            </div>
+                            <div class="col-sm-10">
+                                <!--el input para ingresar el nombre del alumno debe se txt_alumno-->
+                                <input type="text" class="form-control nombre " id="txtAlumno" placeholder="Ingrese el nombre del alumno">
+                                <div class="alert alert-danger display-none" id="txtAlumnoAlert" role="alert">
+                                    <button type="button" class="close" onclick="o$('#myModal').modal('hide')" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                                    <span class="glyphicon glyphicon-info-sign error-color" aria-hidden="true"></span>
+                                    Por favor ingrese el nombre. Es obligatorio</div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-success" onclick="save_open_activity_to_local('txtAlumno')">Guardar</button>
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src="js/jquery.min.js"></script>
+    <script src="js/jquery-ui.js"></script>
+    <!-- Include all compiled plugins (below), or include individual files as needed -->
+    <script src="js/bootstrap.min.js"></script>
+    <!--generador de pdf-->
+    <script src="js/html2pdf/html2pdf.bundle.min.js"></script>
+    <script src="js/screenfull.js"></script>
+    <script src="js/helper.js"></script>
+    <script src="js/autosize.js"></script>
+    <script src="js/activities.js"></script>
+    <script src="js/react-with-addons.js"></script>
+    <script type="text/javascript" src="js/literallycanvas.min.js"></script>
+    <script src="js/animate.css.min.js"></script>
+    <script src="js/jquery.animate.css.js"></script>
+    <script src="js/Utilitario.js"></script>
+    <script src="js/validacionesExtras.js"></script>
+    <script src="js/actividad2.1.js"></script>
+    <script src="js/anijs-min.js"></script>
+    <script src="js/textoavoz.js"></script>
+    <script>
+    $("#n_pagina").html("11"); //impresion de pagina
+    $(".btnCalificar").bind("click", function() {
+        CalificacionAbierta();
+    });
+
+    $(".drag").draggable({
+        revert: "invalid",
+        zIndex: 5,
+        containment: "#pregunta1",
+        scroll: false,
+    });
+
+    $(".pintar2").droppable({
+        classes: {
+            "ui-droppable-active": "ui-state-active", //color azul al arrastrar el elemento
+            "ui-droppable-hover": "ui-state-hover"
+        },
+        drop: function(e, ui) {
+            for (i = 1; i < 5; i++) { //4 elementos
+                var nn = 'c' + i; //obtenemos la clase
+                if ($(ui.draggable).hasClass(nn)) { //comparamos la clase del arrastre
+
+                    if ($(this).hasClass(nn)) { //con la clase del destino q tienen el mismo nombre
+                        resp2.push('ok'); //guardamos ok si esta correcta
+                    } else {
+                        resp2.push('no');
+                    }
+                    console.log(resp2);
+                }
+
+            }
+
+            $(ui.draggable).addClass("bordefinal"); //agregar clase al finalizar arrastre
+            $(ui.draggable).addClass("bounceIn"); //agregar clase al finalizar arrastre
+            $(ui.draggable).removeClass("desaparece"); //quitamos clase de background
+            $(ui.draggable).removeClass("bg_palabra"); //quitamos clase de background
+            $(ui.draggable).removeClass("bin1"); //quitamos clase de background
+            ui.draggable.attr("style", "");
+            $(this).append(ui.draggable);
+        }
+    });
+    </script>
+</body>
+
+</html>

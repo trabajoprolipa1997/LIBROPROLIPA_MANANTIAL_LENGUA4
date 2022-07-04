@@ -1,0 +1,734 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>LENGUA 4</title>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!--Bootstrap-->
+    <link href="css/bootstrap.css" rel="stylesheet">
+    <!--Animaciones-->
+    <link href="css/animate.css" rel="stylesheet">
+    <!--Css propio del proyecto-->
+    <link href="css/custom.css" rel="stylesheet">
+    <link href="css/fraccion.css" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="css/literallycanvas.css">
+    <link href="css/jquery-ui.min.css" rel="stylesheet">
+    <link href="css/stylesopa.css" rel="stylesheet">
+    <link href="css/Comprendo.css" rel="stylesheet">
+    <link href="css/hover.css" rel="stylesheet" media="all">
+    <link href="css/magic.css" rel="stylesheet" media="all">
+</head>
+<style type="text/css">
+.imaf2 {
+    width: 110px;
+    height: 35px;
+    border-radius: 10px;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+.s {
+    font-size: 2vw;
+}
+
+
+
+
+.caja4 {
+    /*width: 145px;*/
+    height: 100%;
+    padding: 5px;
+    border: 1px #029b23 solid;
+}
+
+.drag2,
+.drag,
+.drag3 {
+    cursor: move;
+    mix-blend-mode: multiply;
+    max-width: 100%;
+    font-size: 23px
+}
+
+div:empty::before {
+    color: grey;
+    font-size: 20px;
+
+}
+
+div[data-placeholder]:not([data-placeholder=""]):empty::before {
+    content: attr(data-placeholder);
+}
+
+.backnoabierta {
+    background-color: #00e600 !important;
+    -webkit-print-color-adjust: exact;
+}
+
+.correctoar {
+    background-color: #00e600 !important;
+    -webkit-print-color-adjust: exact;
+    color: #ffffff !important;
+    -webkit-print-color-adjust: exact;
+    margin: 10px;
+}
+
+.incorrectoar {
+    background-color: #ff6666 !important;
+    -webkit-print-color-adjust: exact;
+    color: #ffffff !important;
+    -webkit-print-color-adjust: exact;
+    margin: 10px;
+}
+
+.bordefinal {
+    border: 2px solid #20C997;
+    margin: 5px;
+    border-radius: 67px 58px 58px 58px;
+    -moz-border-radius: 67px 58px 58px 58px;
+    -webkit-border-radius: 67px 58px 58px 58px;
+    padding: 2px;
+    font-size: 20px;
+    color: #000000;
+    display: inline-flex;
+}
+
+.drag1,
+.drag2 {
+    cursor: move;
+}
+
+.btalb {
+    border: 2px solid #B746A2;
+}
+
+.btalb2 {
+    border: 2px solid #9F9349;
+}
+
+.hvr-bounce-in {
+    margin: 15px
+}
+
+.encierreCaja {
+    border: 3px solid #1c8a00;
+    padding: 10px;
+    border-radius: 50%;
+}
+
+.clasinput {
+
+    width: 160px;
+    font-size: 15px;
+    display: inline;
+    max-width: 100%;
+    border-radius: 10px 0px 10px 0px;
+    border: 2px solid #FAB11E;
+}
+
+.flech {
+    color: #00AEEF;
+    font-size: 30px;
+}
+
+
+.styinpt {
+    width: 45px;
+    height: 45px;
+    border-radius: 50%;
+    text-align: center;
+    font-size: 15px;
+    border: 2px solid #00aeef
+}
+
+.styleinputf {
+    width: 45px;
+    height: 45px;
+    border-radius: 20px 0px 20px 0px;
+    text-align: center;
+    font-size: 19px;
+    border: 2px solid #00aeef;
+}
+
+.backnoabierta {
+    background-color: #00e600 !important;
+    -webkit-print-color-adjust: exact;
+}
+
+.seleccionCaja {
+    background-color: #1c8a00;
+    color: white;
+}
+
+.literally {
+    position: relative;
+    background-color: #DDDDDD;
+    min-height: 400px;
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    -ms-touch-action: none;
+}
+
+.tacharCaja::before {
+    position: absolute;
+    color: #000000;
+    content: "x";
+    font-size: 140px;
+    text-align: center;
+    top: 30%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.bin1 {
+    animation-name: bounceIn;
+    animation-duration: 4s;
+    animation-timing-function: ease-out;
+    animation-delay: 0s;
+    animation-iteration-count: 2;
+    animation-direction: initial;
+    animation-fill-mode: forwards;
+    color: #0077c0 !important;
+    -webkit-print-color-adjust: exact;
+}
+
+.desaparece {
+    text-align: center;
+    background-color: #ffffff;
+    border: 1px #20c997 dashed;
+    border-radius: 15px;
+    padding: 5px
+}
+
+.caja3 {
+    height: 100%;
+    border: 1px #029b23 solid;
+    border-radius: 5px;
+    line-height: 70px;
+    margin: 5px;
+    text-align: center;
+}
+
+.mx11 {
+
+    mix-blend-mode: multiply;
+    width: 90px;
+}
+
+.caja {
+    width: 170px;
+    height: 50px;
+    border: 1px #029b23 solid;
+    border-radius: 5px;
+    padding: 5px;
+    text-align: center;
+}
+
+
+.tacharCaja::before {
+    position: absolute;
+    color: #000000;
+    content: "x";
+    font-size: 140px;
+    text-align: center;
+    top: 30%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.inp2 {
+    width: 50px;
+    height: 40px;
+    font-size: 15px;
+    border: 5px solid #06afef;
+    text-align: center;
+}
+
+.bordtable {
+    border: 2px solid #ba92c3;
+}
+
+.subrayar {
+    line-height: 10px;
+    border-bottom: solid 4px #1c8a00;
+}
+
+.bordtablew {
+    border: 3px solid #ffffff !important;
+    -webkit-print-color-adjust: exact;
+}
+
+.inputfile {
+    width: 0.1px;
+    height: 0.1px;
+    opacity: 0;
+    overflow: hidden;
+    position: absolute;
+    z-index: -1;
+}
+</style>
+
+<body>
+    <div id="nota-informativa" class="nota-ayuda">
+        <button type="button" class="close" onclick="cerrar_ayuda()" aria-label="Close"><span class="glyphicon glyphicon-remove-sign" aria-hidden="true"></span></button>
+        <!--ACA ESCRIBIR TEXTO DE LA AYUDA DE LA ACTIVIDAD-->
+        <div class="redactoraudio"></div>
+        <div id='mensaje'>
+            <b>Las actividades 2 y 3 deben ser calificadas por tú docente</b><br>
+            En la actividad 1 encuentra los ingredientes en la sopa de letras seleccionando con click sostenido desde la primera letra hasta la letra final de cada palabra y escribe en los casilleros las palabras que vas encontrando en la sopa de letras.<br>
+            En las actividades 2 y 3 observa con atención las preguntas y respóndelas correctamente.<br>
+            <span id="ayudas"></span>
+        </div>
+    </div>
+    <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+        </div>
+        <div class="navbar-collapse collapse">
+            <ul class="nav navbar-nav navbar-left">
+                <li>
+                    <button class="btn button btnHelp mytooltip" data-info="Mostrar ayuda de la actividad" onclick="mostrar_ayuda()">
+                        <span class="glyphicon glyphicon-question-sign" aria-hidden="true"></span>
+                    </button>
+                </li>
+                <li>
+                    <button class="btn button button_1 btnGuardar mytooltip" data-info="Guardar en local" onclick="$('#myModal').modal('show')">
+                        <span class="glyphicon glyphicon-floppy-save" aria-hidden="true"></span>
+                    </button>
+                </li>
+                <li>
+                    <button class="btn button button_1 btnEvniar mytooltip" style="display: none !important;" data-info="Enviar a Correo">
+                        <span class="glyphicon glyphicon-envelope" aria-hidden="true"></span>
+                    </button>
+                </li>
+                <li>
+                    <button class="btn button button_2 btnIniciar mytooltip" style="display: none !important;" disabled data-info="Iniciar">
+                        <span class="glyphicon glyphicon-play" aria-hidden="true"></span>
+                    </button>
+                </li>
+                <li>
+                    <button class="btn button button_2 btnRepetir mytooltip" data-info="Repetir" onclick="location.reload()">
+                        <span class="glyphicon glyphicon-refresh" aria-hidden="true"></span>
+                    </button>
+                </li>
+                <li>
+                    <button class="btn button button_3 btnCalificar mytooltip" data-info="Calificar / Comprobar" id="bt_comprobar" onclick="totalf()">
+                        <span class="glyphicon glyphicon-check" aria-hidden="true"></span>
+                    </button>
+                </li>
+                <li>
+                    <button class="btn button button_5 mytooltip display-none" style="display: none !important;" data-info="Pantalla completa" onclick="full_screen_change()">
+                        <span id="full_ico" class="glyphicon glyphicon-resize-full" aria-hidden="true"></span>
+                    </button>
+                </li>
+            </ul>
+            <ul class="nav navbar-nav navbar-right" style="margin-right: 0px;margin-left: 0px; ">
+                <li><span class="notificacion actividad">
+                        <span class="glyphicon glyphicon-list-alt"></span> Actividad <span id='n_cont'>1</span> / <span id='n_ejer'>1</span>
+                    </span>
+                    <span class="notificacion nota">
+                        <span class="glyphicon glyphicon-pencil"></span> Nota <span id="txtNota"></span> / 10
+                    </span>
+                    <span class="notificacion pagina">
+                        <span class="glyphicon glyphicon-bookmark"></span> Pág <i id="n_pagina"></i>
+                    </span>
+                </li>
+            </ul>
+        </div>
+    </nav>
+    <!--FIN DE NAVBAR QUE SE AÑADE-->
+    <div class="container espacio">
+        <div class="panel border-aplico" id="activity">
+            <!--modificar el bg- segun la actividad-->
+            <div class="panel-heading bg-aplico">
+                <span class="titulo"><img src="img/icoA.png" alt=""> Aplico</span>
+                <span class="titulo_2 txtAlumno display-none" id="nombre_alumno">Alumno: </span>
+            </div>
+            <div class="panel-body">
+                <!--pregunats de la actividad-->
+                <img src="img/practico.jpg" style="max-width: 100%;">
+                <div class="text-question">
+                    <input type="text" size="2" style="text-align:center;" class="nota-abierta" min="0" max="10" id="pre1a" placeholder="0">&nbsp;
+                    <span>
+                        <b style="color: #03b9ac !important; -webkit-print-color-adjust: exact;">1. </b></font><b>Encuentra</b> en la sopa de letras los nombres de los ingredientes para preparar las papas ahogadas. <b>Escríbelos</b>.<i class="6pts"></i>
+                    </span>
+                    <br><br>
+                    <div class="row">
+                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12" align="center">
+                                <div style="border-radius: 20px">
+                                    <div align="center">
+                                        <table align="center">
+                                            <tr>
+                                                <td width="500" align="center">
+                                                    <table align="center">
+                                                        <tr>
+                                                            <td>
+                                                                <div id="puzzle"></div>
+                                                            </td>
+                                                        </tr>
+                                                    </table>
+                                                </td>
+                                                <td align="center" width="500">
+                                                    <div style="border: 2px dashed #50c9e6; border-radius: 10px; display: inline-block;">
+                                                        <input class="form-control text-question inp1 hvr-grow-shadow" id="act1num0" style="text-align: center; width: 250px; margin: 5px;" maxlength="15" placeholder="Texto">
+                                                        <br>
+                                                        <input class="form-control text-question inp1 hvr-grow-shadow" id="act1num1" style="text-align: center; width: 250px; margin: 5px;" maxlength="15" placeholder="Texto">
+                                                        <br>
+                                                        <input class="form-control text-question inp1 hvr-grow-shadow" id="act1num2" style="text-align: center; width: 250px; margin: 5px;" maxlength="15" placeholder="Texto">
+                                                        <br>
+                                                        <input class="form-control text-question inp1 hvr-grow-shadow" id="act1num3" style="text-align: center; width: 250px; margin: 5px;" maxlength="15" placeholder="Texto">
+                                                        <br>
+                                                        <input class="form-control text-question inp1 hvr-grow-shadow" id="act1num4" style="text-align: center; width: 250px; margin: 5px;" maxlength="15" placeholder="Texto">
+                                                        <br>
+                                                        <input class="form-control text-question inp1 hvr-grow-shadow" id="act1num5" style="text-align: center; width: 250px; margin: 5px;" maxlength="15" placeholder="Texto">
+                                                        <br>
+                                                        <input class="form-control text-question inp1 hvr-grow-shadow" id="act1num6" style="text-align: center; width: 250px; margin: 5px;" maxlength="15" placeholder="Texto">
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <br>
+                <div class="text-question">
+                    <input type="text" size="2" style="text-align:center;" class="nota-abierta" min="0" max="10" id="pre2a" readonly="">&nbsp;
+                    <span>
+                        <font><b style="color: #03b9ac !important; -webkit-print-color-adjust: exact;">2. </b></font><b>Lee</b> los dos textos de recetas y <b>encuentra</b> las semejanzas y diferencias.<i class="2_5ptsd"></i>
+                    </span><br><br>
+                    <div class="row">
+                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                            <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6" align="center">
+                                <div align="center" class="act1class" id="act01Txt1">
+                                </div>
+                            </div>
+                            <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6" align="center">
+                                <div align="center" class="act1class" id="act01Txt2">
+                                </div>
+                            </div>
+                            <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 act2class" id="act02Txt1">
+                            </div>
+                            <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 act2class" id="act02Txt2">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <br>
+                <div class="text-question">
+                    <input type="text" size="2" style="text-align:center;" class="nota-abierta" min="0" max="10" id="pre3a" readonly="">&nbsp;
+                    <span>
+                        <font><b style="color: #03b9ac !important; -webkit-print-color-adjust: exact;">3. </b></font>¿Por qué crees que se deben mantener las tradiciones culinarias en nuestro país?<i class="1_5ptsd"></i>
+                    </span><br><br>
+                    <div class="row">
+                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12" align="center">
+                            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                                <div>
+                                    <textarea class="form-control text-question hvr-grow-shadow" style="box-shadow: 0px -20px 20px #e0e1e3 inset !important; -webkit-print-color-adjust: exact;" cols="60" rows="5" placeholder="Texto"></textarea>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Modal Guardar PDF-->
+    <div class="modal fade animated pulse" id="myModal" role="dialog">
+        <div class="modal-dialog">
+            <!-- Modal content-->
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" onclick="$('#myModal').modal('hide')">&times;</button>
+                    <h4 class="modal-title">Guarda esta actividad en tu computadora</h4>
+                </div>
+                <div class="modal-body">
+                    <form id="modal_form" class="form-horizontal">
+                        <div class="form-group ">
+                            <div class="col-sm-2">
+                                <label id="lbl_nombre" for="txtAlumno">Alumno: </label>
+                            </div>
+                            <div class="col-sm-10">
+                                <!--el input para ingresar el nombre del alumno debe se txt_alumno-->
+                                <input type="text" class="form-control nombre " id="txtAlumno" placeholder="Ingrese tu nombre">
+                                <div class="alert alert-danger display-none" id="txtAlumnoAlert" role="alert">
+                                    <button type="button" class="close" onclick="o$('#myModal').modal('hide')" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                                    <span class="glyphicon glyphicon-info-sign error-color" aria-hidden="true"></span>
+                                    Debes ingresar tu nombre</div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-success" onclick="save_open_activity_to_local('txtAlumno')">Guardar</button>
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src="js/jquery.min.js"></script>
+    <script src="js/jquery-ui.js"></script>
+    <!-- Include all compiled plugins (below), or include individual files as needed -->
+    <script src="js/bootstrap.min.js"></script>
+    <!--generador de pdf-->
+    <script src="js/html2pdf/html2pdf.bundle.min.js"></script>
+    <script src="js/screenfull.js"></script>
+    <script src="js/helper.js"></script>
+    <script src="js/autosize.js"></script>
+    <script src="js/activities.js"></script>
+    <script src="js/react-with-addons.js"></script>
+    <script type="text/javascript" src="js/literallycanvas.min.js"></script>
+    <script type="text/javascript" src="js/wordfind.js"></script>
+    <script type="text/javascript" src="js/wordfindgame.js"></script>
+    <script src="js/Utilitario.js"></script>
+    <script src="js/numPaginas.js"></script>
+    <script src="js/actividad8_2.js"></script>
+    <script src="js/anijs-min.js"></script>
+    <script src="js/textoavoz.js"></script>
+    <script type="text/javascript">
+    $("#n_pagina").html('23');
+
+    var words = ['PAPAS', 'MANTECA', 'CEBOLLA', 'AJO', 'ORÉGANO', 'CULANTRO', 'PIMIENTA'];
+    var gamePuzzle = wordfindgame.create(words, '#puzzle', '#words');
+    $('#solve').click(function() { wordfindgame.solve(gamePuzzle, words); });
+    var puzzle = wordfind.newPuzzle(words, { height: 20, width: 20, fillBlanks: false });
+    wordfind.print(puzzle);
+
+    var resul = [],
+        tmp, cor = 0,
+        inc = 0,
+        cont = 0,
+        calificacions = 3,
+        itemsTs = 7,
+        calificacion = 10,
+        itemsT = 10,
+        cont = 1,
+        sopa = 0,
+        ejer = 1;
+
+    var totalC = 0,
+        totalFinal = 0,
+        total = 0;
+
+    $(".btnCalificar").bind("click", function() {
+
+
+    });
+
+    $(".drag1").draggable({
+        revert: "invalid",
+        zIndex: 5,
+        containment: "#pregunta1",
+        scroll: false,
+    });
+
+    function mostrar1() {
+        var archivo = document.getElementById("file1").files[0];
+        var reader = new FileReader();
+        if (file1) {
+            reader.readAsDataURL(archivo);
+            reader.onloadend = function() {
+                document.getElementById("img1").src = reader.result;
+            }
+        }
+    }
+
+    $(".pintar1").droppable({
+        classes: {
+            "ui-droppable-active": "ui-state-active", //color azul al arrastrar el elemento
+            "ui-droppable-hover": "ui-state-hover"
+        },
+        drop: function(e, ui) {
+            for (i = 1; i < 5; i++) { //4 elementos
+                var nn = 'c' + i; //obtenemos la clase
+                if ($(ui.draggable).hasClass(nn)) { //comparamos la clase del arrastre
+
+                    if ($(this).hasClass(nn)) { //con la clase del destino q tienen el mismo nombre
+                        resp2.push('ok'); //guardamos ok si esta correcta
+                    } else {
+                        resp2.push('no');
+                    }
+                    console.log(resp2);
+                }
+
+            }
+
+            $(ui.draggable).removeClass("bg_palabra"); //quitamos clase de background
+            $(ui.draggable).removeClass("binpulseanim"); //quitamos clase de background
+            ui.draggable.attr("style", "");
+            $(this).append(ui.draggable);
+        }
+    });
+
+    $(document).ready(function() {
+        var winHeight = $(window).height();
+        var winWidth = $(window).width();
+        var imageSize = { width: winHeight, height: winHeight };
+        var watermarkImage = new Image();
+        watermarkImage.src = 'img/i1_p170_act60.jpg';
+        var watermarkImage2 = new Image();
+        watermarkImage2.src = 'img/i6_p170_act60.jpg';
+        var watermarkImage3 = new Image();
+        watermarkImage3.src = 'img/i4_p121_act40.jpg';
+        var watermarkImage4 = new Image();
+        watermarkImage4.src = 'img/i1_p123_act40.jpg';
+        var watermarkImage5 = new Image();
+        watermarkImage5.src = 'img/i2_p123_act40.jpg';
+        var watermarkImage6 = new Image();
+        watermarkImage6.src = 'img/i3_p123_act40.jpg';
+
+        LC.init(
+            document.getElementsByClassName('my-drawing')[0], {
+                imageURLPrefix: 'imgcanvas',
+                watermarkImage: watermarkImage,
+                watermarkScale: 0.9, // you can scale it
+                //imageSize: imageSize
+                backgroundColor: 'white'
+
+
+            });
+
+        LC.init(
+            document.getElementsByClassName('my-drawing2')[0], {
+                imageURLPrefix: 'imgcanvas',
+                watermarkImage: watermarkImage2,
+                watermarkScale: 0.9, // you can scale it
+                //imageSize: imageSize
+                backgroundColor: 'white'
+
+
+            });
+
+        LC.init(
+            document.getElementsByClassName('my-drawing3')[0], {
+                imageURLPrefix: 'imgcanvas',
+                watermarkImage: watermarkImage3,
+                watermarkScale: 0.9, // you can scale it
+                //imageSize: imageSize
+                backgroundColor: 'white'
+
+
+            });
+
+        LC.init(
+            document.getElementsByClassName('my-drawing4')[0], {
+                imageURLPrefix: 'imgcanvas',
+                watermarkImage: watermarkImage4,
+                watermarkScale: 0.9, // you can scale it
+                //imageSize: imageSize
+                backgroundColor: 'white'
+
+
+            });
+
+        LC.init(
+            document.getElementsByClassName('my-drawing5')[0], {
+                imageURLPrefix: 'imgcanvas',
+                watermarkImage: watermarkImage5,
+                watermarkScale: 0.9, // you can scale it
+                //imageSize: imageSize
+                backgroundColor: 'white'
+
+
+            });
+
+        LC.init(
+            document.getElementsByClassName('my-drawing6')[0], {
+                imageURLPrefix: 'imgcanvas',
+                watermarkImage: watermarkImage6,
+                watermarkScale: 0.9, // you can scale it
+                //imageSize: imageSize
+                backgroundColor: 'white'
+
+
+            });
+    });
+
+
+    function pregunta1() {
+        cont++;
+
+
+        totalC = (sopa * (calificacions / itemsTs)).toFixed(2); //suma de calificacion cerrada
+
+
+        var cont1 = 0;
+        var respact1 = ['PAPAS', 'MANTECA', 'CEBOLLA', 'AJO', 'ORÉGANO', 'CULANTRO', 'PIMIENTA'];
+        for (var i = 0; i < 7; i++) {
+            var res1 = $('#act1num' + [i] + '').val();
+            var rc = respact1.indexOf(res1);
+            if (respact1[rc] == res1) {
+                cont1 = cont1 + 1;
+                respact1[rc] = 'A';
+                $('#act1num' + [i] + '').addClass('correctoar')
+            } else {
+                $('#act1num' + [i] + '').addClass('incorrectoar')
+
+            }
+            console.log(respact1);
+
+        }
+        var totalcont = cont1;
+        var total = (totalcont * 3) / 7;
+
+        var totalfin = parseFloat(totalC) + parseFloat(total);
+
+
+        if (totalfin < 0) {
+            totalfin = 0;
+            $('#pre1a').val(parseFloat(totalfin).toFixed(2));
+        } else {
+            $('#pre1a').val(parseFloat(totalfin).toFixed(2));
+        }
+
+    }
+
+    $('.inp1').keyup(function() {
+        this.value = this.value.toUpperCase();
+    });
+
+
+
+
+    function totalf() {
+        pregunta1();
+        var pre1a = document.getElementById('pre1a').value;
+        var pre2a = document.getElementById('pre2a').value;
+        var pre3a = document.getElementById('pre3a').value;
+
+        cor = (parseFloat(pre1a) + parseFloat(pre2a) + parseFloat(pre3a)).toFixed(2);
+        //console.log(total,totalC,cor);
+        if (cor > 10) {
+            alert("Verifique su puntaje en las respuestas Abiertas, excede el limite de calificación");
+        } else {
+            Calculo_nota();
+            document.getElementById('bt_comprobar').disabled = true;
+            $('input').attr("disabled", true);
+            $('textarea').attr("disabled", true);
+            $('#txtAlumno').attr("disabled", false);
+            $('div').attr("disabled", true);
+            $('.nota-abierta').addClass('backnoabierta');
+            $('.enc3a').off('click');
+            $('.desaparece').filter(function() {
+                return $.trim($(this).text()) === ''
+            }).hide();
+            $('.bin1').removeClass('bin1');
+        }
+    }
+    </script>
+</body>
+
+</html>

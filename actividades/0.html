@@ -1,0 +1,736 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Lengua y Literatura 4</title>
+	<meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <!--Bootstrap-->
+        <link href="css/bootstrap.css" rel="stylesheet">
+        <!--Animaciones-->
+        <link href="css/animate.css" rel="stylesheet">
+        <!--Css propio del proyecto-->
+        <link href="css/custom.css" rel="stylesheet">
+        <link rel="stylesheet" type="text/css" href="css/literallycanvas.css">
+        <link href="css/fraccion.css" rel="stylesheet">
+        <link href="css/jquery-ui.min.css" rel="stylesheet">
+
+</head>
+<style type="text/css">
+
+    .cajas{
+		max-width: 95%;
+		max-height: 200px;
+		border: 1px #009900 solid;
+		border-radius: 5px;
+		padding: 15px;
+		margin: 5px;
+	}
+	.actividad1{
+		background: #fff;		
+	}
+	.correcto{
+            color: #ffffff;
+            background-color: #8FB435 !important;
+            -webkit-print-color-adjust: exact; 
+        }
+        .incorrecto{
+            color: #ffffff;
+            background-color: #E76E80 !important;
+            -webkit-print-color-adjust: exact; 
+        }
+	.desactivar{
+		background-color: #444;
+		color: #888;
+		padding: 8px;
+	}
+	#cabecera .badge{
+		background-color: #232956;
+	}
+.c_origen {
+    border: 1px solid #009BDB;
+    border-radius: 10px;
+    min-height: 50px;
+    max-width: 100%;
+    margin-left: 1px;
+}
+
+.c_destinos2 {
+    padding: 5px;
+    border: 1px solid #CCAE69;
+    border-radius: 10px;
+    min-height: 70px;
+    min-width: 40px;
+}
+.seleccionCaja {
+
+    width: auto;
+    height: auto;
+    border-radius: 50px;
+    border: 10px rgb(34, 197, 29) solid;
+
+
+}
+.correctoi {
+    background-color: #8FB435;
+    border: solid 4px #8FB435;
+
+
+}
+
+.incorrectoi {
+    background-color: #E76E80;
+    border: solid 4px #E76E80;
+
+}
+    .pintar1 {
+    background:  #06D931 ;
+
+}
+.pintar2 {
+    border-bottom: 3px solid orange;
+}
+    .vacio {}
+
+    .subrayar {
+        border-bottom:  solid 3px orange;
+    }
+
+    .encierra {
+        height: auto;
+        width: auto;
+        text-align: center;
+        vertical-align: middle;
+        border-radius: 50%;
+        border: solid 3px orange;
+    }
+</style>
+<body>
+<div id="nota-informativa" class="nota-ayuda">
+        <button type="button" class="close" onclick="cerrar_ayuda()" aria-label="Close"><span class="glyphicon glyphicon-remove-sign" aria-hidden="true"></span></button>
+        <!--ACA ESCRIBIR TEXTO DE LA AYUDA DE LA ACTIVIDAD-->
+        1. Escriba la respuesta correcta según corresponda.<br>
+        2. Seleccione la respuesta correcta según corresponda.<br>
+        3. Seleccione la respuesta correcta según corresponda, 2 clicks (subrayar), 3 clicks (encerrar).<br>
+        4. Escriba la respuesta correcta según corresponda.<br> 
+        5. Seleccione la respuesta correcta según corresponda.<br>
+        6. Seleccione la respuesta correcta según corresponda.<br>
+        <span id="ayudas"></span>
+        </div>
+
+        <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+            </div>
+            <div class="navbar-collapse collapse">
+                <ul class="nav navbar-nav navbar-left">
+                    <li>
+                        <button class="btn button btnHelp mytooltip" data-info="Mostrar ayuda de la actividad" onclick="mostrar_ayuda()">
+                            <span   class="glyphicon glyphicon-question-sign" aria-hidden="true"></span>
+                        </button>
+                    </li>
+                    <li>
+                        <button class="btn button button_1 btnGuardar mytooltip" data-info="Guardar en local" onclick="$('#myModal').modal('show')">
+                            <span  class="glyphicon glyphicon-floppy-save" aria-hidden="true"></span>
+                        </button>
+                    </li>
+                    <li >
+                        <button class="btn button button_1 btnEvniar mytooltip" style="display: none !important;" data-info="Enviar a Correo">
+                            <span  class="glyphicon glyphicon-envelope" aria-hidden="true"></span>
+                        </button>
+                    </li >
+                    <li >
+                        <button class="btn button button_2 btnIniciar mytooltip" style="display: none !important;" disabled data-info="Iniciar" >
+                            <span class="glyphicon glyphicon-play" aria-hidden="true"></span>
+                        </button>
+                    </li>
+                    <li>
+                        <button class="btn button button_2 btnRepetir mytooltip"  data-info="Repetir" onclick="location.reload()" >
+                            <span class="glyphicon glyphicon-refresh" aria-hidden="true"></span>
+                        </button>
+                    </li>
+                    <li>
+                        <button class="btn button button_3 btnCalificar mytooltip" data-info="Calificar / Comprobar" id="bt_comprobar" onclick="NotaFinal()">
+                            <span  class="glyphicon glyphicon-check" aria-hidden="true"></span>
+                        </button>
+                    </li>
+                    <li>
+                        <button class="btn button button_5 mytooltip display-none" style="display: none !important;" data-info="Pantalla completa" onclick="full_screen_change()">
+                            <span id="full_ico" class="glyphicon glyphicon-resize-full" aria-hidden="true"></span>
+                        </button>
+                    </li>
+                </ul>
+                <ul class="nav navbar-nav navbar-right" style="margin-right: 0px;margin-left: 0px; ">
+                    <li><span  class="notificacion actividad" >
+                            <span class="glyphicon glyphicon-list-alt"></span> Actividad <span id='n_cont'>1</span> / <span id='n_ejer'>1</span>
+                        </span>
+                        <span  class="notificacion nota" >
+                            <span class="glyphicon glyphicon-pencil"></span> Nota <span id="txtNota" ></span> / 10
+                        </span>
+                        <span  class="notificacion pagina" >
+                            <span class="glyphicon glyphicon-bookmark"></span> Pág <i id="n_pagina"></i>
+                        </span>
+                    </li>
+
+                </ul>
+            </div>
+
+        </nav>
+<!--FIN DE NAVBAR QUE SE AÑADE-->
+	<div class="container espacio">
+		<div class="panel border-evaluacion" id="activity"> 
+                <!--modificar el bg- segun la actividad-->
+                <div class="panel-heading bg-evaluacion">
+                    <span class="titulo" ><img src='img/icoE.png' alt='Evaluación diagnóstica'> Evaluación diagnóstica</span>
+                    <span class="titulo_2 txtAlumno display-none" id="nombre_alumno" >Alumno: </span>                    
+                </div>
+                <div class="panel-body">
+                    
+                    <!--pregunats de la actividad-->
+                    <div class="text-question">
+                    <input type="text" size="2" style="text-align:center" class="nota-abierta calif" min="0" max="10" id="pre1a" readonly="" value="0">&nbsp; <span><span style="color: #28B367;"><b>1. </b></span> <b>Relaciona</b> los distintos tipos de textos escritos con su principal funcionalidad. <b>Escribe</b> el número que les corresponde.  <b>(2 pts.)</b><br><br></span></div>
+                <div class="col-lg-12 text-question">
+                    <table class="table" style="background: #E1F4FC;">
+                            <tr>
+                                <td width="50%"><div class="" style="border-radius: 10px;border:solid 2px #0CB2F0;">
+                        <table class="table">
+                            <tr>
+                                <td width="25%">
+                                    <div id="p1ran0"></div>
+                                </td>
+                                <td width="25%">
+                                    <div id="p1ran1"></div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td width="25%">
+                                    <div id="p1ran2"></div>
+                                </td>
+                                <td width="25%">
+                                    <div id="p1ran3"></div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td width="25%">
+                                    <div id="p1ran4"></div>
+                                </td>
+                                <td width="25%">
+                                    <div id="p1ran5"></div>
+                                </td>
+                            </tr>
+                        </table>
+                    </div></td>
+                                <td width="50%" style="vertical-align: middle;border-radius: 10px;border:solid 2px #0CB2F0;"><div class="" >
+                        <span style="color:#126BBF;"><b>1.</b></span> Explicar los significados de las palabras.<br>
+                        <span style="color:#126BBF;"><b>2.</b></span> Dar a conocer noticias de actualidad.<br>
+                        <span style="color:#126BBF;"><b>3.</b></span> Informar algo a las personas cercanas.<br>
+                        <span style="color:#126BBF;"><b>4.</b></span> Promover ideas positivas en la comunidad.<br>
+                        <span style="color:#126BBF;"><b>5.</b></span> Divertir y estimular la imaginación.<br>
+                        <span style="color:#126BBF;"><b>6.</b></span> Informar de forma divertida, sobre diversos temas.<br>
+                    </div></td>
+                            </tr>
+                    </table>
+                    
+                    
+                </div>
+
+                <div class="text-question">
+                    <input type="text" size="2" style="text-align:center" class="nota-abierta calif" min="0" max="10" id="pre2a" readonly="" value="0">&nbsp; <span><span style="color: #28B367;"><b>2. </b></span> <b>Lee</b> con atención el texto y <b>contesta</b> las preguntas. <b>Subraya</b> las respuestas.   <b>(1 pts.)</b><br><br></span></div>
+                <div class="col-lg-12 text-question">
+                    <table class="table">
+                            <tr>
+                                <td width="50%" style="border-radius: 10px;border:solid 2px #EE0E93;background: #FCE9F1 ;"><div class="" >Cuando salimos al campo, en lugares de climas cálidos, estamos expuestos a sufrir la picadura de los mosquitos. Los mosquitos hembras son los que pican. Usan una parte especial de su boca para chupar la sangre de otros animales y las personas. La saliva del insecto es la que provoca la comezón, como resultado del líquido tóxico que ha hecho contacto con la piel. El sitio de la picadura se hincha y toma un color rojizo. Para evitar las picaduras se recomienda el uso de repelente de insectos.</div>
+                                </td>
+                                 <td width="50%"><div class="" style="border-radius: 10px;border:solid 2px #EE0E93;">
+                                     <table class="table">
+                                         <tr>
+                                             <td width="5%" style="color:#126BBF;"><b>a)</b></td>
+                                             <td width="95%" id="p2ran0">
+                                                 
+                                             </td>
+                                         </tr>
+                                         <tr>
+                                             <td width="5%" style="color:#126BBF;"><b>b)</b></td>
+                                             <td width="95%" id="p2ran1">
+                                                 
+                                             </td>
+                                         </tr>
+                                         <tr>
+                                             <td width="5%" style="color:#126BBF;"><b>c)</b></td>
+                                             <td width="95%" id="p2ran2"></td>
+                                         </tr>
+                                     </table>
+                                 </div>
+                                </td>
+                            </tr>
+                    </table>
+
+                </div>
+                <div class="col-lg-12"><br></div>
+                <div class="text-question">
+                    <input type="text" size="2" style="text-align:center" class="nota-abierta calif" min="0" max="10" id="pre3a" readonly="" value="0">&nbsp; <span><span style="color: #28B367;"><b>3. </b></span> <b>Reconoce</b> el sujeto y el predicado en las siguientes oraciones. <b>Encierra</b> el sujeto y <b>subraya</b> el predicado. <b>(2 pts.)</b><br><br></span></div>
+                <div class="col-lg-12 text-question" id="p3ran1" style="text-align: center;">
+                    
+                </div>
+                <div class="col-lg-12"><br></div>
+                <div class="text-question">
+                    <input type="text" size="2" style="text-align:center" class="nota-abierta calif" min="0" max="10" id="pre4a" readonly="" value="0">&nbsp; <span><span style="color: #28B367;"><b>4. </b></span> <b>Describe</b> un lugar que te guste. <b>Utiliza</b> adjetivos y comparaciones  <b>(1 pts.)</b><br></span></div>
+                <div class="col-lg-12 text-question">
+                     <div class="col-lg-12"><br><textarea rows="6" class="form-control text-question" style="border: solid 1px purple;text-align: center;"></textarea><br></div>
+ 
+                </div>
+
+                <div class="text-question">
+                    <input type="text" size="2" style="text-align:center" class="nota-abierta calif" min="0" max="10" id="pre5a" readonly="" value="0" >&nbsp; <span><span style="color: #28B367;"><b>5. </b></span> <b>Subraya</b> la palabra sinónima. <b>Identifica</b> en el grupo, la palabra que significa lo mismo que el término del inicio.    <b>(2 pts.)</b><br><br></span></div>
+                <div class="col-lg-12 text-question">
+                    <div class="col-lg-6"><div class="col-lg-12"><table class="table" border="2" bordercolor="#0FB3F0" style="text-align:center;"><tr><td width="50%" style="background: #E1F4FC;"><b>hermoso</b></td><td width="50%" style="background: #E1F4FC;"><b>diminuto</b></td></tr><tr><td id="p5ran1"></td><td id="p5ran2"></td></tr></table></div></div>
+                    <div class="col-lg-6"><div class="col-lg-12"><table class="table" border="2" bordercolor="#52B65A" style="text-align:center;"><tr><td width="50%" style="background: #EAF4E7;"><b>cálido</b></td><td width="50%" style="background: #EAF4E7;"><b>adelante</b></td></tr><tr><td id="p5ran3"></td><td id="p5ran4"></td></tr></table></div></div>
+                </div>
+                <div class="text-question">
+                    <input type="text" size="2" style="text-align:center" class="nota-abierta calif" min="0" max="10" id="pre6a" readonly="" value="0" >&nbsp; <span><span style="color: #28B367;"><b>6. </b></span> <b>Subraya</b> la palabra antónima. <b>Identifica</b> en el grupo, la palabra que significa lo contrario que el término del inicio.  <b>(2 pts.)</b><br><br></span></div>
+                <div class="col-lg-12 text-question">
+                    <div class="col-lg-6"><div class="col-lg-12"><table class="table" border="2" bordercolor="#0FB3F0" style="text-align:center;"><tr><td width="50%" style="background: #E1F4FC;"><b>triste</b></td><td width="50%" style="background: #E1F4FC;"><b>duro</b></td></tr><tr><td id="p6ran1"></td><td id="p6ran2"></td></tr></table></div></div>
+                    <div class="col-lg-6"><div class="col-lg-12"><table class="table" border="2" bordercolor="#52B65A" style="text-align:center;"><tr><td width="50%" style="background: #EAF4E7;"><b>cerrado</b></td><td width="50%" style="background: #EAF4E7;"><b>silencioso</b></td></tr><tr><td id="p6ran3"></td><td id="p6ran4"></td></tr></table></div></div>
+                </div>
+
+            </div>		
+	</div>
+
+	<!-- Modal Guardar PDF-->
+        <div class="modal fade animated pulse" id="myModal" role="dialog">
+            <div class="modal-dialog">
+
+                <!-- Modal content-->
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" onclick="$('#myModal').modal('hide')">&times;</button>
+                        <h4 class="modal-title">Guarda esta actividad en tu computadora</h4>
+                    </div>
+                    <div class="modal-body">
+                        <form id="modal_form" class="form-horizontal">
+                            <div class="form-group ">
+                                <div class="col-sm-2">
+                                    <label id="lbl_nombre" for="txtAlumno">Alumno: </label>
+                                </div>  
+                                <div class="col-sm-10"> 
+                                    <!--el input para ingresar el nombre del alumno debe se txt_alumno-->
+                                    <input type="text" class="form-control nombre " id="txtAlumno" placeholder="Ingrese tu nombre">
+                                    <div class="alert alert-danger display-none" id="txtAlumnoAlert" role="alert">
+                                        <button type="button" class="close" onclick="o$('#myModal').modal('hide')" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                                        <span class="glyphicon glyphicon-info-sign error-color"  aria-hidden="true"></span>
+                                        Debes ingresar tu nombre</div>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-success" onclick="save_open_activity_to_local('txtAlumno')">Guardar</button>
+                        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                    </div>
+                </div>        
+            </div>
+        </div>
+        
+	<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src="js/jquery.min.js"></script>
+    <script src="js/jquery-ui.js"></script>
+    <!-- Include all compiled plugins (below), or include individual files as needed -->
+    <script src="js/bootstrap.min.js"></script>
+    <!--generador de pdf-->
+    <script src="js/html2pdf/html2pdf.bundle.min.js"></script>
+    <script src="js/screenfull.js"></script>
+    <script src="js/helper.js"></script>
+    <script src="js/react-with-addons.js"></script>
+    <script type="text/javascript" src="js/literallycanvas.min.js"></script>
+    <script src="js/activities.js"></script>
+    <script src="js/Utilitario.js"></script>
+    <script src="js/validacionesExtras.js"></script>
+    <script>
+        var titulos = 'reflexiono';
+        $("#n_pagina").html('19');
+
+    var tpre1 = 0;
+    var tpre2 = 0;
+    var tpre3 = 0;
+    var tpre4 = 0;
+    var tpre5 = 0;
+
+
+
+    var cor = 0;
+    cont = 1,
+        ejer = 1,
+        itemsT = 10,
+        inc = 0,
+        calificacion = 10;
+
+    function soloNumeros(e) {
+        var key = window.Event ? e.which : e.keyCode
+        return ((key >= 48 && key <= 57) || (key == 8))
+    }
+
+    // #region Pregunta1}
+    p1ran1 = [
+        '<div style="background:#E1F4FC;"><center>Periódicos <input id="p1var0" style="border: solid 2px #60C3E5;border-radius:10px;text-align: center;width:40px;" maxlength="1"><img src="img/i1_p19_act0.jpg" alt="" class="img-responsive" style="mix-blend-mode:multiply;"></div></center></div>',
+        '<div style="background:#E1F4FC;"><center>Revistas <input id="p1var1" style="border: solid 2px #60C3E5;border-radius:10px;text-align: center;width:40px;" maxlength="1"><img src="img/i2_p19_act0.jpg" alt="" class="img-responsive" style="mix-blend-mode:multiply;"></div></center></div>',
+        '<div style="background:#E1F4FC;"><center>Mensajes <input id="p1var2" style="border: solid 2px #60C3E5;border-radius:10px;text-align: center;width:40px;" maxlength="1"><img src="img/i3_p19_act0.jpg" alt="" class="img-responsive" style="mix-blend-mode:multiply;"></div></center></div>',
+        '<div style="background:#E1F4FC;"><center>Diccionario <input id="p1var3" style="border: solid 2px #60C3E5;border-radius:10px;text-align: center;width:40px;" maxlength="1"><img src="img/i4_p19_act0.jpg" alt="" class="img-responsive" style="mix-blend-mode:multiply;"></div></center></div>',
+        '<div style="background:#E1F4FC;"><center>Cuentos <input id="p1var4" style="border: solid 2px #60C3E5;border-radius:10px;text-align: center;width:40px;" maxlength="1"><img src="img/i5_p19_act0.jpg" alt="" class="img-responsive" style="mix-blend-mode:multiply;"></div></center></div>',
+        '<div style="background:#E1F4FC;"><center>Carteles <input id="p1var5" style="border: solid 2px #60C3E5;border-radius:10px;text-align: center;width:40px;" maxlength="1"><img src="img/i6_p19_act0.jpg" alt="" class="img-responsive" style="mix-blend-mode:multiply;"></div></center></div>',
+    ];
+    p1ran1.sort(f_randomico);
+    for (var i = 0; i < p1ran1.length; i++) {
+        $('#p1ran' + [i] + '').html(p1ran1[i]);
+    }
+    function pregunta1() {
+        p1vec2 = ['2','3','4','1','5','6'];
+        var core = 0;
+        for (var i = 0; i < p1vec2.length; i++) {
+            if (($("#p1var" + [i] + "").val().toLowerCase()) == p1vec2[i]) {
+                core = core + 1;
+                $("#p1var" + [i] + "").removeClass('subrayar')
+                $("#p1var" + [i] + "").addClass("correcto");
+            } else {
+                core;
+                $("#p1var" + [i] + "").removeClass('subrayar')
+                $("#p1var" + [i] + "").addClass("incorrecto");
+            }
+        }
+         tpre1 = (((core) * 2) / 6);
+        if (tpre1 < 0) {
+            tpre1 = 0;
+            $("#pre1a").val(parseFloat(tpre1).toFixed(2));
+        } else {
+            $("#pre1a").val(parseFloat(tpre1).toFixed(2));
+        }    
+    }
+    // #endregion
+
+   // #region Pregunta2
+   p2ran1=[
+   '¿Qué tipo de texto es el que has leído?<br><span id="p2var0" class="enc2">Cuento</span>, <span id="p2var1" class="enc2">texto de divulgación científica</span>,<span id="p2var2" class="enc2">poema receta</span>, <span id="p2var3" class="enc2">trabalenguas</span>',
+    '¿Cuál es el objetivo del texto leído?<br><span id="p2var4" class="enc2">Divertir al lector.</span> <span id="p2var5" class="enc2">Motivar a realizar una acción.</span> <span id="p2var6" class="enc2">Informar.</span>',
+    '¿Qué es lo que provoca la comezón si te pica un mosquito?<br> <span id="p2var7" class="enc2">La hinchazón de la piel.</span> <span id="p2var8" class="enc2">El color rojizo de la piel.</span> <span id="p2var9" class="enc2">La saliva del mosquito.<span id="p2var10" class="enc2">',
+   ];
+   p2ran1.sort(f_randomico);
+    for (var i = 0; i < p2ran1.length; i++) {
+        $('#p2ran' + [i] + '').html(p2ran1[i]);
+    }
+    $('.enc2').css('cursor', 'pointer');
+    $('.enc2').click(function() {
+
+        if ($(this).hasClass('pintar2')) {
+            $(this).removeClass('pintar2')
+        } else {
+            $(this).addClass('pintar2')
+        }
+    });
+    function pregunta2() {
+         var cont = 0;
+        for (var i = 0; i < 11; i++) {
+            if(($('#p2var' + [i] + '').hasClass('pintar2')== true)){
+                if ((($('#p2var' + [i] + '').text())=="texto de divulgación científica")||(($('#p2var' + [i] + '').text())=="Informar.")||(($('#p2var' + [i] + '').text())=="La saliva del mosquito.")) {
+                    $('#p2var' + [i] + '').addClass('correcto');
+                    $('#p2var' + [i] + '').removeClass('pintar10');
+                    cont++;
+                } else {
+                    cont--;
+                    $('#p2var' + [i] + '').addClass('incorrecto');
+                    $('#p2var' + [i] + '').removeClass('pintar10');
+                }
+            }
+        }
+
+        if(cont<0)
+        {
+            cont=0;
+         tpre2 = ((cont * 1) / 3);  
+        }
+        else
+        {
+         tpre2 = ((cont * 1) / 3);
+        }
+        $("#pre2a").val(parseFloat(tpre2).toFixed(2));         
+    }
+    // #endregion
+
+       // #region Pregunta3
+    p3ran1=[
+    '<span class="enc3" id="p3var0">Las picaduras de los mosquitos</span> <span class="enc3" id="p3var1">causan comezón.</span><br><br>',
+    '<span class="enc3" id="p3var2">Las revistas científicas</span> <span class="enc3" id="p3var3">informan de muchos temas.</span><br><br>',
+    '<span class="enc3" id="p3var4">Los cocineros</span> <span class="enc3" id="p3var5">preparan sabrosos platos típicos.</span><br><br>',
+    '<span class="enc3" id="p3var6">Mi perro Ramón</span> <span class="enc3" id="p3var7">juega en el parque.</span><br><br>',
+    '<span class="enc3" id="p3var8">Todos los días</span>, <span class="enc3" id="p3var9">mi hermana y yo</span> <span class="enc3" id="p3var10">vamos a la escuela.</span><br><br>',
+    ];
+    p3ran1.sort(f_randomico);
+    $('#p3ran1').html(p3ran1);
+    $('.enc3').css('cursor', 'pointer');
+    $('.enc3').click(function() {
+    if ($(this).hasClass('vacio')) {
+        $(this).removeClass('vacio')
+        $(this).addClass('encierra')
+    } else if ($(this).hasClass('encierra')) {
+        $(this).removeClass('encierra')
+        $(this).addClass('subrayar')
+    } else {
+        $(this).removeClass('subrayar')
+        $(this).addClass('vacio')
+    }
+});
+    function pregunta3() {
+        
+    var respr1 = 0;
+    var respr2 = 0;
+    for (var i = 0; i < 11; i++) {
+        var caja = $('span[id=p3var' + [i] + ']').text();
+        if (($('#p3var' + [i] + '').hasClass("subrayar") == true)) {
+
+            if ((caja == "causan comezón.") || (caja == "informan de muchos temas.") || (caja == "preparan sabrosos platos típicos.")|| (caja == "juega en el parque.")|| (caja == "Todos los días")|| (caja == "vamos a la escuela.")) {
+                respr1++;
+                
+                
+                $('#p3var' + [i] + '').removeClass('subrayar');
+                f_ok($('#p3var' + [i] + ''));
+            } else {
+                respr2++;
+
+                
+                f_no($('#p3var' + [i] + ''));
+                $('#p3var' + [i] + '').removeClass('subrayar');
+            }
+
+        }
+
+        if (($('#p3var' + [i] + '').hasClass("encierra") == true)) {
+
+            if ((caja == "Las picaduras de los mosquitos") || (caja == "Las revistas científicas") || (caja == "Los cocineros") || (caja == "Mi perro Ramón") || (caja == "mi hermana y yo")) {
+                respr1++;
+
+                $('#p3var' + [i] + '').removeClass('encierra');
+                f_ok($('#p3var' + [i] + ''));
+            } else {
+                respr2++;
+
+                f_no($('#p3var' + [i] + ''));
+                $('#p3var' + [i] + '').removeClass('encierra');
+            }
+
+        }
+    }
+        var total = ((respr1 - respr2) * 2) / 11;
+    if (total < 0) {
+        total = 0;
+        tpre3 = total;
+    } else {
+        tpre3 = total;
+    }
+
+    tpre3 = total.toFixed(2);
+    $("#pre3a").val(parseFloat(tpre3).toFixed(2));          
+    }
+    // #endregion
+
+       // #region Pregunta4
+    document.getElementById("pre4a").addEventListener("keypress", () => {
+    validNumero(0, 1, 1);
+    });
+    document.getElementById("pre4a").addEventListener("keyup", () => {
+        validMaxIngreso(document.getElementById("pre4a"), 1);
+    });
+    function pregunta4() {
+       var pre4a = document.getElementById("pre4a").value;
+        tpre4 = pre4a;
+        $("#pre4a").val(parseFloat(tpre4).toFixed(2));        
+    }
+    // #endregion
+    
+    // #region Pregunta5}
+    p5ran1=[
+    '<span id="p5var0" class="enc5">grande</span><br>',
+    '<span id="p5var1" class="enc5">bello</span><br>',
+    '<span id="p5var2" class="enc5">claro</span><br>',
+    '<span id="p5var3" class="enc5">delicado</span><br>',
+    ];
+    p5ran1.sort(f_randomico);
+    $('#p5ran1').html(p5ran1);
+
+    p5ran2=[
+    '<span id="p5var4" class="enc5">grueso</span><br>',
+    '<span id="p5var5" class="enc5">delgado</span><br>',
+    '<span id="p5var6" class="enc5">pequeño</span><br>',
+    '<span id="p5var7" class="enc5">solitario</span><br>',
+    ];
+    p5ran2.sort(f_randomico);
+    $('#p5ran2').html(p5ran2);
+
+    p5ran3=[
+    '<span id="p5var8" class="enc5">colorado</span><br>',
+    '<span id="p5var9" class="enc5">frío</span><br>',
+    '<span id="p5var10" class="enc5">templado</span><br>',
+    '<span id="p5var11" class="enc5">caliente</span><br>',
+    ];
+    p5ran3.sort(f_randomico);
+    $('#p5ran3').html(p5ran3);
+
+    p5ran4=[
+    '<span id="p5var12" class="enc5">atrás</span><br>',
+    '<span id="p5var13" class="enc5">lejos</span><br>',
+    '<span id="p5var14" class="enc5">cerca</span><br>',
+    '<span id="p5var15" class="enc5">arriba</span><br>',
+    ];
+    p5ran4.sort(f_randomico);
+    $('#p5ran4').html(p5ran4);
+    
+    $('.enc5').css('cursor', 'pointer');
+    $('.enc5').click(function() {
+
+        if ($(this).hasClass('pintar2')) {
+            $(this).removeClass('pintar2')
+        } else {
+            $(this).addClass('pintar2')
+        }
+    });
+    function pregunta5() {
+                 var cont = 0;
+        for (var i = 0; i < 16; i++) {
+            if(($('#p5var' + [i] + '').hasClass('pintar2')== true)){
+                if ((($('#p5var' + [i] + '').text())=="bello")||(($('#p5var' + [i] + '').text())=="pequeño")||(($('#p5var' + [i] + '').text())=="caliente")||(($('#p5var' + [i] + '').text())=="cerca")) {
+                    $('#p5var' + [i] + '').addClass('correcto');
+                    $('#p5var' + [i] + '').removeClass('pintar10');
+                    cont++;
+                } else {
+                    cont--;
+                    $('#p5var' + [i] + '').addClass('incorrecto');
+                    $('#p5var' + [i] + '').removeClass('pintar10');
+                }
+            }
+        }
+
+        if(cont<0)
+        {
+            cont=0;
+         tpre5 = ((cont * 2) / 4);  
+        }
+        else
+        {
+         tpre5 = ((cont * 2) / 4);
+        }
+        $("#pre5a").val(parseFloat(tpre5).toFixed(2));         
+    }
+    // #endregion
+    
+    // #region Pregunta6}
+    p6ran1=[
+    '<span id="p6var0" class="enc6">atrasado</span><br>',
+    '<span id="p6var1" class="enc6">feliz</span><br>',
+    '<span id="p6var2" class="enc6">cansado</span><br>',
+    '<span id="p6var3" class="enc6">apenado</span><br>',
+    ];
+    p6ran1.sort(f_randomico);
+    $('#p6ran1').html(p6ran1);
+
+    p6ran2=[
+    '<span id="p6var4" class="enc6">limpio</span><br>',
+    '<span id="p6var5" class="enc6">ruidoso</span><br>',
+    '<span id="p6var6" class="enc6">suave</span><br>',
+    '<span id="p6var7" class="enc6">áspero</span><br>',
+    ];
+    p6ran2.sort(f_randomico);
+    $('#p6ran2').html(p6ran2);
+
+    p6ran3=[
+    '<span id="p6var8" class="enc6">bajo</span><br>',
+    '<span id="p6var9" class="enc6">alto</span><br>',
+    '<span id="p6var10" class="enc6">atorado</span><br>',
+    '<span id="p6var11" class="enc6">abierto</span><br>',
+    ];
+    p6ran3.sort(f_randomico);
+    $('#p6ran3').html(p6ran3);
+
+    p6ran4=[
+    '<span id="p6var12" class="enc6">callado</span><br>',
+    '<span id="p6var13" class="enc6">dormido</span><br>',
+    '<span id="p6var14" class="enc6">ruidoso</span><br>',
+    '<span id="p6var15" class="enc6">calmado</span><br>',
+    ];
+    p6ran4.sort(f_randomico);
+    $('#p6ran4').html(p6ran4);
+    
+    $('.enc6').css('cursor', 'pointer');
+    $('.enc6').click(function() {
+
+        if ($(this).hasClass('pintar2')) {
+            $(this).removeClass('pintar2')
+        } else {
+            $(this).addClass('pintar2')
+        }
+    });
+    function pregunta6() {
+             var cont = 0;
+        for (var i = 0; i < 16; i++) {
+            if(($('#p6var' + [i] + '').hasClass('pintar2')== true)){
+                if ((($('#p6var' + [i] + '').text())=="feliz")||(($('#p6var' + [i] + '').text())=="suave")||(($('#p6var' + [i] + '').text())=="abierto")||(($('#p6var' + [i] + '').text())=="ruidoso")) {
+                    $('#p6var' + [i] + '').addClass('correcto');
+                    $('#p6var' + [i] + '').removeClass('pintar10');
+                    cont++;
+                } else {
+                    cont--;
+                    $('#p6var' + [i] + '').addClass('incorrecto');
+                    $('#p6var' + [i] + '').removeClass('pintar10');
+                }
+            }
+        }
+
+        if(cont<0)
+        {
+            cont=0;
+         tpre6 = ((cont * 2) / 4);  
+        }
+        else
+        {
+         tpre6 = ((cont * 2) / 4);
+        }
+        $("#pre6a").val(parseFloat(tpre6).toFixed(2));     
+    }
+    // #endregion
+
+
+
+    // #region Calculo Nota Final
+    function NotaFinal() {
+            var pre1a = document.getElementById("pre1a").value;
+        if (pre1a == "") {
+            alert("Pregunta 1: Califique la pregunta");
+        } else {
+                var pre4a = document.getElementById("pre4a").value;
+                if (pre4a == "") {
+                alert("Pregunta 4: Califique la pregunta");
+                } else {
+                        pregunta1();
+                        pregunta2();
+                        pregunta3();
+                        pregunta4();
+                        pregunta5();
+                        pregunta6();
+                        cor = parseFloat(tpre1)+parseFloat(tpre2)+parseFloat(tpre3)+parseFloat(tpre4)+parseFloat(tpre5)+parseFloat(tpre6);
+                        Calculo_nota();  
+                    }
+                }
+            }
+
+    
+    // #endregion1
+
+
+
+
+    </script>
+
+
+        
+</body>
+</html>
